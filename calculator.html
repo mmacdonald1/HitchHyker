@@ -4,6 +4,7 @@
   <head>
 
 <link href="./assets/css/calculator.css" rel="stylesheet">
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </head>
 <body>
   <div class="container">
@@ -13,16 +14,37 @@
   </header>
 
 <ul>
-  <div>Budget Unknown</div>
-  	<div>Budget Known</div>
+    <div>
+      <input type="checkbox" class="options" id="budget-unknown" name="budget" value="budget-unknown">
+      <label for="budget-unknown">Budget Unknown</label>
+    </div>
+  	  <div>
+      <input type="checkbox" class="options" id="budget-known" name="budget" value="budget-known">
+      <label for="budget-known">Budget Known</label>
+    </div>
 
   	<hr>
-
-  	<div>Gas</div>
-  	<div>Food</div>
-  	<div>Lodging</div>
-  	<div>Tolls</div>
-  	<div>Entertainment</div>
+  
+  	  <div>
+      <input type="checkbox" class="options" id="gas-div" name="gasDiv" value="gas-div">
+      <label for="gas-div">Gas</label>
+    </div>
+  	<div>
+      <input type="checkbox" class="options" id="food-div" name="foodDiv" value="food-div">
+      <label for="food-div">Food</label>
+    </div>
+  	<div>
+      <input type="checkbox" class="options" id="lodging-div" name="lodgingDiv" value="lodging-div">
+      <label for="lodging-div">Lodging</label>
+    </div>
+  	<div>
+      <input type="checkbox" class="options" id="tolls-div" name="tollsDiv" value="tolls-div">
+      <label for="tolls-div">Tolls</label>
+    </div>
+  	<div>
+      <input type="checkbox" class="options" id="ent-div" name="entDiv" value="ent-div">
+      <label for="ent-div">Entertainment</label>
+    </div>
 </ul>
 
   <!-- <nav>
@@ -45,4 +67,6 @@
 
 
 </body>
+    
+<script src="assets/javascript/javascript.js"></script>
 </html>
