@@ -3,6 +3,14 @@ var travelCalc;
 var budgetKnown;
 var budgetUnknown;
 var travOptions;
+var budgetInput;
+var gasInput;
+var miles;
+var mpg;
+var foodInput;
+var lodgingInput;
+var tollInput;
+var entInput;
 
 //DOM manipulations
 
@@ -14,17 +22,121 @@ $(document).ready(function(){
         $("#budget-unknown").on('change', function() {
           if ($(this).is(':checked')) {
             $(this).attr('value', 'true');
+            $("#budget-known").attr('value', false);
+            budgetInput= $(" ");
+            $("#budget-input").append(budgetInput);
           } else {
             $(this).attr('value', 'false');
           }
             console.log($("#budget-unknown").val());
 
-}); 
-
-        }
-    }
-    travelCalc.budgetType();    
 });
+        $("#budget-known").on('change', function() {
+          if ($(this).is(':checked')) {
+            $(this).attr('value', 'true');
+            budgetInput= $("<input>");
+            $("#budget-input").append(budgetInput);
+          } else {
+            $(this).attr('value', 'false');
+
+          }
+            console.log($("#budget-known").val());
+
+});  
+
+        },
+
+        expenses: function (){
+          
+          $("#gas-div").on('change', function() {
+          if ($(this).is(':checked')) {
+            $(this).attr('value', 'true');
+              gasInput= $("<input>");
+              $(gasInput).attr('placeholder',"Enter avg. price of gas");
+              mpg= $("<input>");
+              $(mpg).attr('placeholder',"Miles per gallon of car");
+              miles= $("<input>");
+              $(miles).attr('placeholder',"Distance of drive");
+            $("#gas-input").append(gasInput,mpg,miles);
+          } else {
+            $(this).attr('value', 'false');
+            
+          }
+            console.log($("#gas-div").val());
+    });
+          $("#food-div").on('change', function() {
+          if ($(this).is(':checked')) {
+            $(this).attr('value', 'true');
+              foodInput= $("<input>");
+              $(foodInput).attr('placeholder',"Daily budget for food");
+            $("#food-input").append(foodInput);
+          } else {
+            $(this).attr('value', 'false');
+            
+          }
+            
+    });
+          $("#lodging-div").on('change', function() {
+          if ($(this).is(':checked')) {
+            $(this).attr('value', 'true');
+              LodgingInput= $("<input>");
+              $(LodgingInput).attr('placeholder',"Cost per night");
+            $("#lodging-input").append(LodgingInput);
+          } else {
+            $(this).attr('value', 'false');
+            
+          }
+            
+    });
+
+          $("#tolls-div").on('change', function() {
+          if ($(this).is(':checked')) {
+            $(this).attr('value', 'true');
+              tollInput= $("<input>");
+              $(tollInput).attr('placeholder',"Toll money");
+            $("#toll-input").append(tollInput);
+          } else {
+            $(this).attr('value', 'false');
+            
+          }
+            
+    });  
+
+
+
+          $("#ent-div").on('change', function() {
+          if ($(this).is(':checked')) {
+            $(this).attr('value', 'true');
+              entInput= $("<input>");
+              $(entInput).attr('placeholder',"Fun Money");
+            $("#ent-input").append(entInput);
+          } else {
+            $(this).attr('value', 'false');
+            
+          }
+            
+    });  
+
+
+    //         $("#gas").on('change', function() {
+    //       if ($(this).is(':checked')) {
+    //         $(this).attr('value', 'true');
+    //           budgetInput= $("<input>");
+    //         $("#budget-input").append(budgetInput);
+    //       } else {
+    //         $(this).attr('value', 'false');
+            
+    //       }
+    //         console.log($("#budget-known").val());
+    // });
+
+}
+    }
+    travelCalc.budgetType();
+    travelCalc.expenses();    
+});
+
+
 
 
 
