@@ -1,4 +1,4 @@
-//Global variables
+//Global variables//Global variables
 var travelCalc;
 var budgetKnown;
 var budgetUnknown;
@@ -11,41 +11,29 @@ var foodInput;
 var lodgingInput;
 var tollInput;
 var entInput;
-
+var category;
 //DOM manipulations
-
 $(document).ready(function(){
     travelCalc = {
         //Chose budget type
         budgetType: function(){
-
-        $("#budget-unknown").on('change', function() {
-          if ($(this).is(':checked')) {
-            $(this).attr('value', 'true');
-            $("#budget-known").attr('value', false);
-            budgetInput= $(" ");
-            $("#budget-input").append(budgetInput);
-          } else {
-            $(this).attr('value', 'false');
-          }
-            console.log($("#budget-unknown").val());
-
-});
-        $("#budget-known").on('change', function() {
-          if ($(this).is(':checked')) {
-            $(this).attr('value', 'true');
-            budgetInput= $("<input>");
-            $("#budget-input").append(budgetInput);
-          } else {
-            $(this).attr('value', 'false');
-
-          }
-            console.log($("#budget-known").val());
-
-});  
-
-        },
-
+            $("input[type='radio']").on('change',(function() {
+            category = $(this).attr('id');
+            if(category === "budget-unknown"){
+                $("#budget-unknown").attr('value','true');
+                $("#budget-known").attr('value', 'false');
+                $('#budget-input').detach();
+            }else if(category === "budget-known") {
+                $("#budget-unkown").attr('value', 'false');
+                $("#budget-known").attr('value', 'true');
+                budgetInput= $('<input>');
+                budgetInput.attr('id', "budget-input")
+                $('#insertAfter').after(budgetInput);
+                $(budgetInput).attr('placeholder',"Enter Budget");
+            }
+        }));        
+       
+       },
         expenses: function (){
           
           $("#gas-div").on('change', function() {
@@ -88,7 +76,6 @@ $(document).ready(function(){
           }
             
     });
-
           $("#tolls-div").on('change', function() {
           if ($(this).is(':checked')) {
             $(this).attr('value', 'true');
@@ -101,9 +88,6 @@ $(document).ready(function(){
           }
             
     });  
-
-
-
           $("#ent-div").on('change', function() {
           if ($(this).is(':checked')) {
             $(this).attr('value', 'true');
@@ -116,30 +100,11 @@ $(document).ready(function(){
           }
             
     });  
-
-
-    //         $("#gas").on('change', function() {
-    //       if ($(this).is(':checked')) {
-    //         $(this).attr('value', 'true');
-    //           budgetInput= $("<input>");
-    //         $("#budget-input").append(budgetInput);
-    //       } else {
-    //         $(this).attr('value', 'false');
-            
-    //       }
-    //         console.log($("#budget-known").val());
-    // });
-
 }
     }
     travelCalc.budgetType();
     travelCalc.expenses();    
 });
-
-
-
-
-
 //Chose budget type
 //Budget unknown
     //on click append gas div with user inputs
@@ -150,7 +115,6 @@ $(document).ready(function(){
         //var1/var2 *var3 =subtot
     //function tot
         //sub1+sub2 = total
-
 //Budget known
     //add input budget 
     //.change total to balence
