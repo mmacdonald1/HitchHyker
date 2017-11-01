@@ -11,6 +11,7 @@ var foodInput;
 var lodgingInput;
 var tollInput;
 var entInput;
+var category;
 
 //DOM manipulations
 
@@ -18,33 +19,24 @@ $(document).ready(function(){
     travelCalc = {
         //Chose budget type
         budgetType: function(){
+            $("input[type='radio']").on('change',(function() {
+            category = $(this).attr('id');
+            if(category === "budget-unknown"){
+                $("#budget-unknown").attr('value','true');
+                $("#budget-known").attr('value', 'false');
+                $('#budget-input').detach();
+            }else if(category === "budget-known") {
+                $("#budget-unkown").attr('value', 'false');
+                $("#budget-known").attr('value', 'true');
+                budgetInput= $('<input>');
+                budgetInput.attr('id', "budget-input")
+                $('#insertAfter').after(budgetInput);
+                $(budgetInput).attr('placeholder',"Enter Budget");
+            }
+        }));        
+       
+       },
 
-        $("#budget-unknown").on('change', function() {
-          if ($(this).is(':checked')) {
-            $(this).attr('value', 'true');
-            $("#budget-known").attr('value', false);
-            budgetInput= $(" ");
-            $("#budget-input").append(budgetInput);
-          } else {
-            $(this).attr('value', 'false');
-          }
-            console.log($("#budget-unknown").val());
-
-});
-        $("#budget-known").on('change', function() {
-          if ($(this).is(':checked')) {
-            $(this).attr('value', 'true');
-            budgetInput= $("<input>");
-            $("#budget-input").append(budgetInput);
-          } else {
-            $(this).attr('value', 'false');
-
-          }
-            console.log($("#budget-known").val());
-
-});  
-
-        },
 
         expenses: function (){
           
