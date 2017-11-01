@@ -9,4 +9,29 @@
 }
 .py-5 {
   text-align: center;
+
 }
+.btn.btn-primary.btn-sm {
+  background-color: green;
+}
+
+.py-5 {
+  padding-top: 4rem!important;
+  padding-bottom: 5em!important;
+}
+
+.py-6.bg-dark {
+  padding-top: 1em!important;
+  padding-bottom: 1em!important;
+
+}
+
+/*.container {
+  padding-top: 2rem!important;
+}*/
+
+/*.py-5.bg-dark {
+  padding-top: 5em;
+  height: 2em;
+  background-color: blue;
+}*/
