@@ -1,35 +1,38 @@
-div.container {
+.container {
     width: 100%;
-    border: 1px solid gray;
+    /*border: 1px solid gray;*/
 }
 
-header, footer {
+ul {
+    float: left;
+    max-width: 190px;
+    margin: 0;
+    padding: 4em;
+}
+
+ .navbar-nav.ml-auto {
+    list-style-type: none;
+    padding: 0;
+}
+
+/*ul a {
+    text-decoration: none;
+}*/
+
+article {
+    margin-left: 170px;
+    border-left: 1px solid gray;
+    padding: 4em;
+    overflow: hidden;
+    padding-bottom: 30em!important;
+}
+
+footer {
     padding: 1em;
     color: white;
     background-color: #778899;
     clear: left;
     text-align: center;
-}
-
-ul {
-    float: left;
-    max-width: 160px;
-    margin: 0;
-    padding: 1em;
-}
-
- ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-ul a {
-    text-decoration: none;
-}
-
-article {
-    margin-left: 170px;
-    border-left: 1px solid gray;
-    padding: 1em;
-    overflow: hidden;
+    width: 100%;
+    position: fixed;
 }

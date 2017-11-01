@@ -9,23 +9,46 @@
 }
 .py-5 {
   text-align: center;
-
+  /*font-family: 'Quicksand', sans-serif;*/
 }
-.btn.btn-primary.btn-sm {
-  background-color: green;
+
+h1  {
+  font-family: 'Quicksand', sans-serif;
+}
+
+
+p {
+  font-size: 20px;
+  font-style: italic;
+}
+.btn.btn-primary.btn-md {
+  background-color: #66CDAA;
+  border-color: inherit;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.btn.btn-secondary.btn-md {
+  border-color: inherit;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .py-5 {
-  padding-top: 4rem!important;
-  padding-bottom: 5em!important;
+  padding-top: 3rem!important;
+  padding-bottom: 3em!important;
+  background-color: #FDF5E6;
 }
 
 .py-6.bg-dark {
   padding-top: 1em!important;
   padding-bottom: 1em!important;
+  position: fixed;
+  width: 100%;
 
 }
 
+.m-0.text-center.text-white {
+  font-size: 10px;
+}
 /*.container {
   padding-top: 2rem!important;
 }*/
