@@ -170,7 +170,7 @@ $(document).ready(function() {
             });
 
         },
-     
+
     }
 
     travelCalc.budgetType();
@@ -183,8 +183,19 @@ function chart() {
     var num1 = $("#gas-in").val();
             var num2 = $("#mpg-input").val();
             var num3 = $("#miles-input").val();
+
             var gasChart = ((num1 / num2) * num3);
               
+
+            var gasResult = ((num1 / num2) * num3);
+            console.log(gasResult);
+//lodging
+    var lodge1= $("#lodging-in").val();
+    var lodge2= $("#nights-in").val();
+    var lodgingResult= (lodge1 * lodge2);
+    console.log(lodgingResult);
+
+
     var myChart = new Chart(ctx, {
         type: 'pie',
         data: {
