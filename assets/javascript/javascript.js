@@ -121,15 +121,7 @@ $(document).ready(function() {
             });
 
         },
-        gasTotal: function() {
-            var num1 = $("#gas-in").val();
-            var num2 = $("#mpg-input").val();
-            var num3 = $("#miles-input").val();
-
-            var result = ((num1 / num2) * num3);
-
-            console.log(result)
-        }
+     
     }
 
     travelCalc.budgetType();
@@ -139,6 +131,11 @@ $(document).ready(function() {
 
 function chart() {
     var ctx = document.getElementById("myChart");
+    var num1 = $("#gas-in").val();
+            var num2 = $("#mpg-input").val();
+            var num3 = $("#miles-input").val();
+            var gasResult = ((num1 / num2) * num3);
+            console.log(gasResult)
     var myChart = new Chart(ctx, {
         type: 'pie',
         data: {
@@ -153,8 +150,16 @@ function chart() {
                     "#e74c3c",
                     "#34495e"
                 ],
-                data: [22, entInput.val(), foodInput.val(), lodgingInput.val(), tollInput.val()]
+                data: [gasResult, entInput.val(), foodInput.val(), lodgingInput.val(), tollInput.val()]
             }]
         }
     });
 }
+
+    // function gasTotal() {
+    //         var num1 = $("#gas-in").val();
+    //         var num2 = $("#mpg-input").val();
+    //         var num3 = $("#miles-input").val();
+    //         var gasResult = ((num1 / num2) * num3);
+    //         console.log(gasResult)
+    //     }
