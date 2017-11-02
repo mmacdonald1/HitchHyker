@@ -120,6 +120,17 @@ $(document).ready(function(){
     });
 },
 
+  gasTotal: function() {
+      var num1= $("#gas-in").val();
+      var num2= $("#mpg-input").val();
+      var num3= $("#miles-input").val();
+
+      var result= ((num1/num2) * num3);
+
+      console.log(result)
+
+},
+
   submit: function(e){
     $('#bk').submit(function (e){
         e.preventDefault();
