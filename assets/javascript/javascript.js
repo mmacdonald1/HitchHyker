@@ -1,4 +1,4 @@
-//Global variables//Global variables
+//Global variables
 var travelCalc;
 var budgetKnown;
 var budgetUnknown;
@@ -30,25 +30,33 @@ $(document).ready(function(){
                 budgetInput.attr('id', "budget-input")
                 $('#insertAfter').after(budgetInput);
                 $(budgetInput).attr('placeholder',"Enter Budget");
+                $(budgetInput).attr('type','number');
+                console.log(budgetInput.val());
             }
-        }));        
-       
+        }));
+
        },
-        expenses: function (){
-          
+      expenses: function (){
+
           $("#gas-div").on('change', function() {
           if ($(this).is(':checked')) {
             $(this).attr('value', 'true');
               gasInput= $("<input>");
               $(gasInput).attr('placeholder',"Enter avg. price of gas");
+              $(gasInput).attr('id',"gas-in");
               mpg= $("<input>");
               $(mpg).attr('placeholder',"Miles per gallon of car");
+              $(mpg).attr('id',"mpg-input");
               miles= $("<input>");
               $(miles).attr('placeholder',"Distance of drive");
+              $(miles).attr('id',"miles-input");
             $("#gas-input").append(gasInput,mpg,miles);
           } else {
-            $(this).attr('value', 'false');
-            
+                $(this).attr('value', 'false');
+                $('#gas-in').detach();
+                $('#mpg-input').detach();
+                $('#miles-input').detach();
+
           }
             console.log($("#gas-div").val());
     });
@@ -57,72 +65,96 @@ $(document).ready(function(){
             $(this).attr('value', 'true');
               foodInput= $("<input>");
               $(foodInput).attr('placeholder',"Daily budget for food");
+              $(foodInput).attr('id',"food-in");
             $("#food-input").append(foodInput);
           } else {
             $(this).attr('value', 'false');
-            
+            $('#food-in').detach();
+
           }
-            
+
     });
           $("#lodging-div").on('change', function() {
           if ($(this).is(':checked')) {
             $(this).attr('value', 'true');
-              LodgingInput= $("<input>");
-              $(LodgingInput).attr('placeholder',"Cost per night");
-            $("#lodging-input").append(LodgingInput);
+              lodgingInput= $("<input>");
+              $(lodgingInput).attr('placeholder',"Cost per night");
+               $(lodgingInput).attr('id',"lodging-in");
+              nightsInput= $("<input>");
+              $(nightsInput).attr('placeholder',"Number of Nights");
+              $(nightsInput).attr('id',"nights-in");
+            $("#lodging-input").append(lodgingInput, nightsInput);
           } else {
             $(this).attr('value', 'false');
-            
+            $('#lodging-in').detach();
+            $('#nights-in').detach();
           }
-            
+
     });
           $("#tolls-div").on('change', function() {
           if ($(this).is(':checked')) {
             $(this).attr('value', 'true');
               tollInput= $("<input>");
               $(tollInput).attr('placeholder',"Toll money");
+              $(tollInput).attr('id',"toll-in");
             $("#toll-input").append(tollInput);
           } else {
             $(this).attr('value', 'false');
-            
+            $('#toll-in').detach();
           }
-            
-    });  
+
+    });
           $("#ent-div").on('change', function() {
           if ($(this).is(':checked')) {
             $(this).attr('value', 'true');
               entInput= $("<input>");
               $(entInput).attr('placeholder',"Fun Money");
+              $(entInput).attr('id',"ent-in");
             $("#ent-input").append(entInput);
           } else {
             $(this).attr('value', 'false');
-            
+              $('#ent-in').detach();
+
           }
-            
-    });  
-}
+
+    });
+},
+
+  submit: function(e){
+    $('#bk').submit(function (e){
+        e.preventDefault();
+        console.log(budgetInput.val());
+    });
+    $('#Expenses').submit(function (e){
+        e.preventDefault();
+        console.log(entInput.val());
+        console.log(tollInput.val());
+    });
+  }
     }
+
     travelCalc.budgetType();
-    travelCalc.expenses();    
+    travelCalc.submit();
+    travelCalc.expenses();
 });
-//Chose budget type
-//Budget unknown
-    //on click append gas div with user inputs
-        // var = .append input & .attr placeholder for each box
-        // var subtot= append div 
-    //on click detach user inputs
-    //function gas
-        //var1/var2 *var3 =subtot
-    //function tot
-        //sub1+sub2 = total
-//Budget known
-    //add input budget 
-    //.change total to balence
-    //on click append gas div with user inputs
-        // var = .append input & .attr placeholder for each box
-        // var subtot= append div 
-    //on click detach user inputs
-    //function gas
-        //var1/var2 *var3 =subtot
-    //function tot 
-        //budget- sub1 - sub2 =balence
+var gas = 300;
+      var ctx = document.getElementById("myChart");
+      var myChart = new Chart(ctx, {
+          type: 'pie',
+        data: {
+          labels: ["gas", "entertainment", "W", "T", "F", "S", "S"],
+          datasets: [{
+            backgroundColor: [
+              "#2ecc71",
+              "#3498db",
+              "#95a5a6",
+              "#9b59b6",
+              "#f1c40f",
+              "#e74c3c",
+              "#34495e"
+            ],
+            data: [gas, entInput, 3, 17, 28, 24, 7]
+          }]
+        }
+      });
+      console.log(gas);

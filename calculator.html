@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="./assets/css/calculator.css" rel="stylesheet">
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-</head>
-
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+  </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
@@ -28,14 +27,14 @@
       </div>
     </div>
   </nav>
-
   <div class="container">
   <header>
      <h1>HitchHyker</h1>
   </header>
 
-  <div class="optionsList">
+<div class="optionsList">
 <ul>
+    <form id="bk">
     <div>
       <input type="radio" class="options" id="budget-unknown" name="budget" value="budget-unknown">
       <label for="budget-unknown">Budget Unknown</label>
@@ -45,8 +44,10 @@
       <label for="budget-known">Budget Known</label>
 
     </div>
+
     <hr>
-      <div>
+  <form id="Expenses">
+    <div>
       <input type="checkbox" class="options" id="gas-div" name="gasDiv" value="gas-div">
       <label for="gas-div">Gas</label>
       <div id="gas-input"></div>
@@ -71,16 +72,19 @@
       <label for="ent-div">Entertainment</label>
       <div id="ent-input"></div>
     </div>
+    <br>
+    <input type="submit" value="Submit">
+  </form>
 </ul>
-  </div>
+</div>
+
   <article>
     <h1>Budget Breakdown</h1>
-
+    <canvas id="myChart" style="width: 100px; height: 100px">
     <p>Blah</p>
     <p>Blah</p>
   </article>
 </div>
-
   <footer>Copyright &copy; HitchHyker 2017</footer>
 </body>
 <script src="assets/javascript/javascript.js"></script>

@@ -5,7 +5,7 @@
 
 
 .optionsList {
-  color: red;
+  color: 	#778899;
   margin-top: 3%;
   font-family: 'Quicksand', sans-serif;
   /*position: fixed;*/
@@ -36,6 +36,7 @@ article {
     overflow: hidden;
     padding-bottom: 30em!important;
     font-family: 'Quicksand', sans-serif;
+    color: 	#778899;
 }
 
 footer {
@@ -45,7 +46,7 @@ footer {
     clear: left;
     text-align: center;
     width: 100%;
-    
+
 }
 
 #budget-input {
