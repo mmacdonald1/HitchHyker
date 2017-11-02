@@ -12,6 +12,13 @@ var lodgingInput;
 var tollInput;
 var entInput;
 var category;
+var foodChart = 0;
+var gasChart = 0;
+var entChart = 0;
+var lodgingChart = 0;
+var tollChart = 0;
+var entChart = 0;
+
 //DOM manipulations
 $(document).ready(function() {
     travelCalc = {
@@ -56,7 +63,6 @@ $(document).ready(function() {
                     $('#mpg-input').detach();
                     $('#miles-input').detach();
                 }
-                console.log($("#gas-div").val());
             });
             $("#food-div").on('change', function() {
                 if ($(this).is(':checked')) {
@@ -68,9 +74,17 @@ $(document).ready(function() {
                 } else {
                     $(this).attr('value', 'false');
                     $('#food-in').detach();
+                    
+                    
                 }
 
             });
+
+            // if ($("#food-div").val()=== true) {
+            //         foodChart = foodInput.val();
+            //       }else{
+            //         foodChart = 0;
+            //       };
             $("#lodging-div").on('change', function() {
                 if ($(this).is(':checked')) {
                     $(this).attr('value', 'true');
@@ -94,6 +108,7 @@ $(document).ready(function() {
                     $(tollInput).attr('placeholder', "Toll money");
                     $(tollInput).attr('id', "toll-in");
                     $("#toll-input").append(tollInput);
+                    tollChart = tollInput.val();
                 } else {
                     $(this).attr('value', 'false');
                     $('#toll-in').detach();
@@ -106,6 +121,7 @@ $(document).ready(function() {
                     $(entInput).attr('placeholder', "Fun Money");
                     $(entInput).attr('id', "ent-in");
                     $("#ent-input").append(entInput);
+                    entChart = entInput.val();
                 } else {
                     $(this).attr('value', 'false');
                     $('#ent-in').detach();
@@ -117,7 +133,40 @@ $(document).ready(function() {
         submit: function(e) {
             $('#bk').submit(function(e) {
                 e.preventDefault();
-                chart();
+                var flag = false
+                if(typeof(gasInput) == 'undefined'){
+                  gasChart = 0
+                }else{
+                  flag = true
+                  gasChart = gasInput.val()
+                }
+                if(typeof(foodInput) == 'undefined'){
+                  foodChart = 0
+                }else{
+                  flag = true
+                  foodChart = foodInput.val()
+                }
+                if(typeof(lodgingInput) == 'undefined'){
+                  lodgingChart = 0
+                }else{
+                  flag = true
+                  lodgingChart = lodgingInput.val()
+                }
+                if(typeof(tollInput) == 'undefined'){
+                  tollChart = 0
+                }else{
+                  flag = true
+                  tollChart = tollInput.val()
+                }
+                if(typeof(entInput) == 'undefined'){
+                  entChart = 0
+                }else{
+                  flag = true
+                  entChart = entInput.val()
+                }
+                if(flag){
+                  chart()
+                }
             });
 
         },
@@ -134,12 +183,12 @@ function chart() {
     var num1 = $("#gas-in").val();
             var num2 = $("#mpg-input").val();
             var num3 = $("#miles-input").val();
-            var gasResult = ((num1 / num2) * num3);
-            console.log(gasResult)
+            var gasChart = ((num1 / num2) * num3);
+              
     var myChart = new Chart(ctx, {
         type: 'pie',
         data: {
-            labels: ["Gas", "Entertainment", "Food", "Lodging", "Tolls"],
+            labels: ["Gas", "Lodging", "Toll", "Entertainment", "Food"],
             datasets: [{
                 backgroundColor: [
                     "#2ecc71",
@@ -150,7 +199,8 @@ function chart() {
                     "#e74c3c",
                     "#34495e"
                 ],
-                data: [gasResult, entInput.val(), foodInput.val(), lodgingInput.val(), tollInput.val()]
+                data: [ gasChart, lodgingChart, tollChart, entChart, foodChart]
+                //gasChart, entChart, foodChart
             }]
         }
     });
