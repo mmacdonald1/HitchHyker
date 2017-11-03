@@ -42,18 +42,17 @@
     <form id="bk">
     <div>
       <input type="radio" class="options" id="budget-unknown" name="budget" value="budget-unknown">
-      <label for="budget-unknown">Budget Unknown</label>
+      <label for="budget-unknown">Budget Unknown*</label>
     </div>
 
       <div id ="insertAfter">
       <input type="radio" class="options" id="budget-known" name="budget" value="budget-known">
-      <label for="budget-known">Budget Known</label>
+      <label for="budget-known">Budget Known*</label>
 
     </div>
 
     <hr>
 
-  <form id="Expenses">
     <div>
       <input type="checkbox" class="options" id="gas-div" name="gasDiv" value="gas-div">
       <label for="gas-div">Gas</label>
@@ -80,7 +79,9 @@
       <div id="ent-input"></div>
     </div>
     <br>
-    <input type="submit" value="Submit" onsubmit="travelCalc.submit">
+
+    <input id="button" type="submit" value="Submit" onsubmit="travelCalc.submit">
+
   </form>
 </ul>
 </div>

@@ -90,9 +90,14 @@
       </div>
 
       <div class="budgetButtons">
-      <button type="button" class="btn btn-primary btn-md">I have a budget</button>
-      <button type="button" class="btn btn-secondary btn-md">I need a budget</button>
+      <button id="submitButton" type="button" class="btn btn-primary btn-md">Calculate travel budget!</button>
     </div>
+
+    <script type="text/javascript">
+      document.getElementById("submitButton").onclick = function() {
+        location.href= "calculator.html";
+    };
+    </script>
     </section>
 
     <!-- Footer -->

@@ -24,10 +24,6 @@ var num2;
 var num3;
 var lodge1;
 var lodge2;
-var gasTot;
-var lodgingTot;
-
-
 //DOM manipulations
 $(document).ready(function() {
     travelCalc = {
@@ -50,7 +46,6 @@ $(document).ready(function() {
                     console.log(budgetInput.val());
                 }
             }));
-
         },
         expenses: function() {
             $("#gas-div").on('change', function() {
@@ -83,17 +78,9 @@ $(document).ready(function() {
                 } else {
                     $(this).attr('value', 'false');
                     $('#food-in').detach();
-
-
                 }
-
             });
 
-            // if ($("#food-div").val()=== true) {
-            //         foodChart = foodInput.val();
-            //       }else{
-            //         foodChart = 0;
-            //       };
             $("#lodging-div").on('change', function() {
                 if ($(this).is(':checked')) {
                     $(this).attr('value', 'true');
@@ -134,15 +121,12 @@ $(document).ready(function() {
                 } else {
                     $(this).attr('value', 'false');
                     $('#ent-in').detach();
-
                 }
-
             });
         },
         submit: function(e) {
             $('#bk').submit(function(e) {
                 e.preventDefault();
-
                 var flag = false
                 if(typeof(gasInput) == 'undefined'){
                   gasChart = 0
@@ -182,34 +166,17 @@ $(document).ready(function() {
                     console.log("this is known");
                     travelCalc.totknown();
                 }
-
                 else{
                     console.log("this is unknown");
                     travelCalc.totunknown();
-
                 }
             });
-
         },
-
         totknown: function(){
-             num1 = $("#gas-in").val();
-             num2 = $("#mpg-input").val();
-             num3 = $("#miles-input").val();
-            gasTot = ((num1 / num2) * num3);
-            console.log(gasTot);
-        //lodging
-             lodge1= $("#lodging-in").val();
-             lodge2= $("#nights-in").val();
-             lodgingTot= (lodge1 * lodge2);
-            console.log(lodgingTot);
-
-
             bud= parseInt($('#budget-input').val());
             console.log(bud);
-            tot= bud- parseInt(gasTot)- parseInt(entInput.val())- parseInt(foodInput.val())- parseInt(lodgingTot) -parseInt(tollInput.val());
+            tot= bud- parseInt(gasChart)- parseInt(entChart)- parseInt(foodChart)- parseInt(lodgingChart) -parseInt(tollChart);
             console.log(tot);
-
             if (tot>=0){
                 $('#tot-input').text("Total Budget: $"+bud);
                 $('#rem-output').text("Remaining Budget: $"+tot);
@@ -219,49 +186,27 @@ $(document).ready(function() {
                alert("You are over your budget " + tot + "dollars");
                 console.log("neg tot");
             }
-
         },
-
         totunknown:function(){
-            num1 = $("#gas-in").val();
-             num2 = $("#mpg-input").val();
-             num3 = $("#miles-input").val();
-            gasTot = ((num1 / num2) * num3);
-            console.log(gasTot);
-        //lodging
-             lodge1= $("#lodging-in").val();
-             lodge2= $("#nights-in").val();
-             lodgingTot= (lodge1 * lodge2);
-            console.log(lodgingTot);
-
-            tot= parseInt(gasTot)+ parseInt(entInput.val())+ parseInt(foodInput.val())+ parseInt(lodgingTot)+ parseInt(tollInput.val());
+            tot= parseInt(gasChart)+ parseInt(entChart)+ parseInt(foodChart)+ parseInt(lodgingChart)+ parseInt(tollChart);
             console.log(tot);
-            $('#totInput').text("$"+tot);
-
+            $('#tot-input').text("Total budget: $"+tot);
         },
-
-
     }
-
     travelCalc.budgetType();
     travelCalc.submit();
     travelCalc.expenses();
 });
-
 function chart() {
     var ctx = document.getElementById("myChart");
-
      num1 = $("#gas-in").val();
      num2 = $("#mpg-input").val();
      num3 = $("#miles-input").val();
-    var gasResult = ((num1 / num2) * num3);
-
+    var gasChart = ((num1 / num2) * num3);
 //lodging
      lodge1= $("#lodging-in").val();
      lodge2= $("#nights-in").val();
-    var lodgingResult= (lodge1 * lodge2);
-
-
+    var lodgingChart= (lodge1 * lodge2);
     var myChart = new Chart(ctx, {
         type: 'pie',
         data: {
@@ -282,11 +227,3 @@ function chart() {
         }
     });
 }
-
-    // function gasTotal() {
-    //         var num1 = $("#gas-in").val();
-    //         var num2 = $("#mpg-input").val();
-    //         var num3 = $("#miles-input").val();
-    //         var gasResult = ((num1 / num2) * num3);
-    //         console.log(gasResult)
-    //     }

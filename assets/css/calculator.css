@@ -12,9 +12,6 @@
   color: 	#778899;
   margin-top: 3%;
   font-family: 'Quicksand', sans-serif;
-
-  /*position: fixed;*/
-
 }
 
 ul {
@@ -22,10 +19,9 @@ ul {
     max-width: 22%;
     /*margin: 0;*/
     padding: 0;
+    padding-top: 3em;
     padding-right: 4em;
     font-family: 'Quicksand', sans-serif;
-
-
 
 }
 
@@ -38,11 +34,23 @@ ul {
 article {
     margin-left: 170px;
     border-left: 1px solid gray;
-    padding: 4em;
+    padding: 3em;
     overflow: hidden;
     padding-bottom: 30em!important;
     font-family: 'Quicksand', sans-serif;
     color: 	#778899;
+    text-align: center;
+}
+
+#button {
+  font-family: 'Quicksand', sans-serif;
+  background-color: #20B2AA;
+  color: white;
+
+}
+
+input:focus {
+    background-color: #bef4f1;
 }
 
 footer {
@@ -52,30 +60,5 @@ footer {
     clear: left;
     text-align: center;
     width: 100%;
-
-}
-
-
-#budget-input {
-
-}
-
-#gas-input {
-
-}
-
-#food-input {
-
-}
-
-#lodging-input {
-
-}
-
-#tolls-input {
-
-}
-
-#ent-input {
 
 }
