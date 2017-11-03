@@ -83,8 +83,8 @@ $(document).ready(function() {
                 } else {
                     $(this).attr('value', 'false');
                     $('#food-in').detach();
-                    
-                    
+
+
                 }
 
             });
@@ -176,13 +176,13 @@ $(document).ready(function() {
                 }
                 if(flag){
                   chart()
-
+                }
                 console.log("i can read");
                 if (category === "budget-known"){
                     console.log("this is known");
                     travelCalc.totknown();
                 }
-                
+
                 else{
                     console.log("this is unknown");
                     travelCalc.totunknown();
@@ -203,13 +203,13 @@ $(document).ready(function() {
              lodge2= $("#nights-in").val();
              lodgingTot= (lodge1 * lodge2);
             console.log(lodgingTot);
-            
-            
+
+
             bud= parseInt($('#budget-input').val());
             console.log(bud);
             tot= bud- parseInt(gasTot)- parseInt(entInput.val())- parseInt(foodInput.val())- parseInt(lodgingTot) -parseInt(tollInput.val());
             console.log(tot);
-            
+
             if (tot>=0){
                 $('#tot-input').text("Total Budget: $"+bud);
                 $('#rem-output').text("Remaining Budget: $"+tot);
@@ -219,9 +219,9 @@ $(document).ready(function() {
                alert("You are over your budget " + tot + "dollars");
                 console.log("neg tot");
             }
-            
+
         },
-        
+
         totunknown:function(){
             num1 = $("#gas-in").val();
              num2 = $("#mpg-input").val();
@@ -233,16 +233,16 @@ $(document).ready(function() {
              lodge2= $("#nights-in").val();
              lodgingTot= (lodge1 * lodge2);
             console.log(lodgingTot);
-            
+
             tot= parseInt(gasTot)+ parseInt(entInput.val())+ parseInt(foodInput.val())+ parseInt(lodgingTot)+ parseInt(tollInput.val());
             console.log(tot);
             $('#totInput').text("$"+tot);
-               
+
         },
-        
-        
+
+
     }
-    
+
     travelCalc.budgetType();
     travelCalc.submit();
     travelCalc.expenses();
