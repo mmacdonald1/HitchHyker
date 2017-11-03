@@ -1,13 +1,18 @@
+
 .container {
     width: 100%;
 
 }
 
+.styleContainer {
+    background-color: #FDF5E6;
+}
 
 .optionsList {
   color: 	#778899;
   margin-top: 3%;
   font-family: 'Quicksand', sans-serif;
+
   /*position: fixed;*/
 
 }
@@ -19,6 +24,7 @@ ul {
     padding: 0;
     padding-right: 4em;
     font-family: 'Quicksand', sans-serif;
+
 
 
 }
@@ -48,6 +54,7 @@ footer {
     width: 100%;
 
 }
+
 
 #budget-input {
 
