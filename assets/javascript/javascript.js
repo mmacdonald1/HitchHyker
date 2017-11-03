@@ -18,6 +18,15 @@ var entChart = 0;
 var lodgingChart = 0;
 var tollChart = 0;
 var entChart = 0;
+var tot;
+var num1;
+var num2;
+var num3;
+var lodge1;
+var lodge2;
+var gasTot;
+var lodgingTot;
+
 
 //DOM manipulations
 $(document).ready(function() {
@@ -133,6 +142,7 @@ $(document).ready(function() {
         submit: function(e) {
             $('#bk').submit(function(e) {
                 e.preventDefault();
+
                 var flag = false
                 if(typeof(gasInput) == 'undefined'){
                   gasChart = 0
@@ -166,13 +176,73 @@ $(document).ready(function() {
                 }
                 if(flag){
                   chart()
+
+                console.log("i can read");
+                if (category === "budget-known"){
+                    console.log("this is known");
+                    travelCalc.totknown();
+                }
+                
+                else{
+                    console.log("this is unknown");
+                    travelCalc.totunknown();
+
                 }
             });
 
         },
 
+        totknown: function(){
+             num1 = $("#gas-in").val();
+             num2 = $("#mpg-input").val();
+             num3 = $("#miles-input").val();
+            gasTot = ((num1 / num2) * num3);
+            console.log(gasTot);
+        //lodging
+             lodge1= $("#lodging-in").val();
+             lodge2= $("#nights-in").val();
+             lodgingTot= (lodge1 * lodge2);
+            console.log(lodgingTot);
+            
+            
+            bud= parseInt($('#budget-input').val());
+            console.log(bud);
+            tot= bud- parseInt(gasTot)- parseInt(entInput.val())- parseInt(foodInput.val())- parseInt(lodgingTot) -parseInt(tollInput.val());
+            console.log(tot);
+            
+            if (tot>=0){
+                $('#tot-input').text("Total Budget: $"+bud);
+                $('#rem-output').text("Remaining Budget: $"+tot);
+                console.log("pos tot");
+            }
+            else{
+               alert("You are over your budget " + tot + "dollars");
+                console.log("neg tot");
+            }
+            
+        },
+        
+        totunknown:function(){
+            num1 = $("#gas-in").val();
+             num2 = $("#mpg-input").val();
+             num3 = $("#miles-input").val();
+            gasTot = ((num1 / num2) * num3);
+            console.log(gasTot);
+        //lodging
+             lodge1= $("#lodging-in").val();
+             lodge2= $("#nights-in").val();
+             lodgingTot= (lodge1 * lodge2);
+            console.log(lodgingTot);
+            
+            tot= parseInt(gasTot)+ parseInt(entInput.val())+ parseInt(foodInput.val())+ parseInt(lodgingTot)+ parseInt(tollInput.val());
+            console.log(tot);
+            $('#totInput').text("$"+tot);
+               
+        },
+        
+        
     }
-
+    
     travelCalc.budgetType();
     travelCalc.submit();
     travelCalc.expenses();
@@ -180,20 +250,16 @@ $(document).ready(function() {
 
 function chart() {
     var ctx = document.getElementById("myChart");
-    var num1 = $("#gas-in").val();
-            var num2 = $("#mpg-input").val();
-            var num3 = $("#miles-input").val();
 
-            var gasChart = ((num1 / num2) * num3);
-              
+     num1 = $("#gas-in").val();
+     num2 = $("#mpg-input").val();
+     num3 = $("#miles-input").val();
+    var gasResult = ((num1 / num2) * num3);
 
-            var gasResult = ((num1 / num2) * num3);
-            console.log(gasResult);
 //lodging
-    var lodge1= $("#lodging-in").val();
-    var lodge2= $("#nights-in").val();
+     lodge1= $("#lodging-in").val();
+     lodge2= $("#nights-in").val();
     var lodgingResult= (lodge1 * lodge2);
-    console.log(lodgingResult);
 
 
     var myChart = new Chart(ctx, {
