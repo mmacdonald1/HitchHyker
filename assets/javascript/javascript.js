@@ -63,24 +63,24 @@ $(document).ready(function() {
                 } else {
                     $(this).attr('value', 'false');
                     $('#gas-in').detach();
-                    $('#gas-in').val('');
+                    $(gasInput).val('0');
                     $('#mpg-input').detach();
-                    $('#mpg-input').val('');
+                    $(mpg).val('0');
                     $('#miles-input').detach();
-                    $('#miles-input').val('');
+                    $(miles).val('0');
                 }
             });
             $("#food-div").on('change', function() {
                 if ($(this).is(':checked')) {
                     $(this).attr('value', 'true');
                     foodInput = $("<input>");
-                    $(foodInput).attr('placeholder', "Budget for food");
+                    $(foodInput).attr('placeholder', "Daily budget for food");
                     $(foodInput).attr('id', "food-in");
                     $("#food-input").append(foodInput);
                 } else {
                     $(this).attr('value', 'false');
                     $('#food-in').detach();
-                    $('#food-in').val('');
+                    $(foodInput).val('0');
                 }
             });
             $("#lodging-div").on('change', function() {
@@ -96,9 +96,9 @@ $(document).ready(function() {
                 } else {
                     $(this).attr('value', 'false');
                     $('#lodging-in').detach();
-                    $('#lodging-in').val('');
+                    $(lodgingInput).val('0');
                     $('#nights-in').detach();
-                    $('#nights-in').val('');
+                    $(nightsInput).val('0');
                 }
             });
             $("#tolls-div").on('change', function() {
@@ -111,8 +111,9 @@ $(document).ready(function() {
                     tollChart = tollInput.val();
                 } else {
                     $(this).attr('value', 'false');
+                    $(tollChart).val('0');
                     $('#toll-in').detach();
-                    $('#toll-in').val('');
+                    $(tollInput).val('0');
                 }
             });
             $("#ent-div").on('change', function() {
@@ -126,7 +127,7 @@ $(document).ready(function() {
                 } else {
                     $(this).attr('value', 'false');
                     $('#ent-in').detach();
-                    $('#ent-in').val('');
+                    $(entInput).val('0');
                 }
             });
         },
