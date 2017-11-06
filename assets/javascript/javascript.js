@@ -17,7 +17,6 @@ var gasChart = 0;
 var entChart = 0;
 var lodgingChart = 0;
 var tollChart = 0;
-var entChart = 0;
 var tot;
 var num1;
 var num2;
@@ -35,6 +34,8 @@ $(document).ready(function() {
                     $("#budget-unknown").attr('value', 'true');
                     $("#budget-known").attr('value', 'false');
                     $('#budget-input').detach();
+                    $('budget-input').val('');
+                    $('#rem-output').text('');
                 } else if (category === "budget-known") {
                     $("#budget-unkown").attr('value', 'false');
                     $("#budget-known").attr('value', 'true');
@@ -64,8 +65,11 @@ $(document).ready(function() {
                 } else {
                     $(this).attr('value', 'false');
                     $('#gas-in').detach();
+                    $('#gas-in').val('');
                     $('#mpg-input').detach();
+                    $('#mpg-input').val('');
                     $('#miles-input').detach();
+                    $('#miles-input').val('');
                 }
             });
             $("#food-div").on('change', function() {
@@ -78,9 +82,9 @@ $(document).ready(function() {
                 } else {
                     $(this).attr('value', 'false');
                     $('#food-in').detach();
+                    $('#food-in').val('');
                 }
             });
-
             $("#lodging-div").on('change', function() {
                 if ($(this).is(':checked')) {
                     $(this).attr('value', 'true');
@@ -94,7 +98,9 @@ $(document).ready(function() {
                 } else {
                     $(this).attr('value', 'false');
                     $('#lodging-in').detach();
+                    $('#lodging-in').val('');
                     $('#nights-in').detach();
+                    $('#nights-in').val('');
                 }
             });
             $("#tolls-div").on('change', function() {
@@ -108,6 +114,7 @@ $(document).ready(function() {
                 } else {
                     $(this).attr('value', 'false');
                     $('#toll-in').detach();
+                    $('#toll-in').val('');
                 }
             });
             $("#ent-div").on('change', function() {
@@ -121,6 +128,7 @@ $(document).ready(function() {
                 } else {
                     $(this).attr('value', 'false');
                     $('#ent-in').detach();
+                    $('#ent-in').val('');
                 }
             });
         },
@@ -128,69 +136,103 @@ $(document).ready(function() {
             $('#bk').submit(function(e) {
                 e.preventDefault();
                 var flag = false
-                if(typeof(gasInput) == 'undefined'){
-                  gasChart = 0
-                }else{
-                  flag = true
-                  gasChart = gasInput.val()
+                if (typeof(gasInput) == 'undefined') {
+                    num1 = 0
+                    num2 = 0
+                    num3 = 0
+                    gasChart = 0
+                } else {
+                    flag = true
+                    gasChart = gasInput.val()
                 }
-                if(typeof(foodInput) == 'undefined'){
-                  foodChart = 0
-                }else{
-                  flag = true
-                  foodChart = foodInput.val()
+                if (typeof(foodInput) == 'undefined') {
+                    foodChart = 0
+                } else {
+                    flag = true
+                    foodChart = foodInput.val()
                 }
-                if(typeof(lodgingInput) == 'undefined'){
-                  lodgingChart = 0
-                }else{
-                  flag = true
-                  lodgingChart = lodgingInput.val()
+                if (typeof(lodgingInput) == 'undefined') {
+                    lodge1 = 0
+                    lodge2 = 0
+                    lodgingChart = 1
+                } else {
+                    flag = true
+                    lodgingChart = lodgingInput.val()
                 }
-                if(typeof(tollInput) == 'undefined'){
-                  tollChart = 0
-                }else{
-                  flag = true
-                  tollChart = tollInput.val()
+                if (typeof(tollInput) == 'undefined') {
+                    tollChart = 0
+                } else {
+                    flag = true
+                    tollChart = tollInput.val()
                 }
-                if(typeof(entInput) == 'undefined'){
-                  entChart = 0
-                }else{
-                  flag = true
-                  entChart = entInput.val()
+                if (typeof(entInput) == 'undefined') {
+                    entChart = 0
+                } else {
+                    flag = true
+                    entChart = entInput.val()
                 }
-                if(flag){
-                  chart()
+                if (flag) {
+                    chart()
                 }
                 console.log("i can read");
-                if (category === "budget-known"){
+                if (category === "budget-known") {
                     console.log("this is known");
                     travelCalc.totknown();
-                }
-                else{
+                } else {
                     console.log("this is unknown");
                     travelCalc.totunknown();
                 }
             });
         },
-        totknown: function(){
-            bud= parseInt($('#budget-input').val());
+        totknown: function() {
+
+            bud = parseInt($('#budget-input').val());
             console.log(bud);
-            tot= bud- parseInt(gasChart)- parseInt(entChart)- parseInt(foodChart)- parseInt(lodgingChart) -parseInt(tollChart);
-            console.log(tot);
-            if (tot>=0){
-                $('#tot-input').text("Total Budget: $"+bud);
-                $('#rem-output').text("Remaining Budget: $"+tot);
-                console.log("pos tot");
+
+           if ((typeof(gasInput) == 'undefined') && (typeof(lodgingInput) == 'undefined')) {
+                 tot = bud - parseInt(entChart) - parseInt(foodChart) - parseInt(tollChart);
+                console.log(tot);
+           }
+            else if (typeof(lodgingInput) == 'undefined') {
+                tot = bud - parseInt(gasChart) - parseInt(entChart) - parseInt(foodChart) - parseInt(tollChart);
+                console.log(tot);
+            } else if (typeof(gasInput) == 'undefined') {
+               tot = bud - parseInt(entChart) - parseInt(foodChart) - parseInt(lodgingChart) - parseInt(tollChart);
+                console.log(tot);
             }
-            else{
-               alert("You are over your budget " + tot + "dollars");
+             else {
+                tot = bud - parseInt(gasChart) - parseInt(entChart) - parseInt(foodChart) - parseInt(lodgingChart) - parseInt(tollChart);
+                console.log(tot);
+             }
+
+            if (tot >= 0) {
+                $('#tot-input').text("Total Budget: $" + bud);
+                $('#rem-output').text("Remaining Budget: $" + tot);
+                console.log("pos tot");
+            } else {
+                alert("You are over your budget " + tot + "dollars");
                 console.log("neg tot");
             }
         },
-        totunknown:function(){
-            tot= parseInt(gasChart)+ parseInt(entChart)+ parseInt(foodChart)+ parseInt(lodgingChart)+ parseInt(tollChart);
-            console.log(tot);
-            $('#tot-input').text("Total budget: $"+tot);
+        totunknown: function() {
+            if ((typeof(gasInput) == 'undefined') && (typeof(lodgingInput) == 'undefined')) {
+                tot = parseInt(entChart) + parseInt(foodChart)  + parseInt(tollChart);
+                console.log(tot);
+                $('#tot-input').text("Total budget: $" + tot);}
+            else if (typeof(lodgingInput) == 'undefined') {
+                tot = parseInt(gasChart) + parseInt(entChart) + parseInt(foodChart) + parseInt(tollChart);
+                console.log(tot);
+                $('#tot-input').text("Total budget: $" + tot);
+            } else if (typeof(gasInput) == 'undefined') {
+                tot = parseInt(entChart) + parseInt(foodChart) + parseInt(lodgingChart) + parseInt(tollChart);
+                console.log(tot);
+                $('#tot-input').text("Total budget: $" + tot);
+            }
+             else {
+                tot = parseInt(gasChart) + parseInt(entChart) + parseInt(foodChart) + parseInt(lodgingChart) + parseInt(tollChart);
+                console.log(tot);
+                $('#tot-input').text("Total budget: $" + tot);
+            }
         },
     }
     travelCalc.budgetType();
@@ -198,15 +240,15 @@ $(document).ready(function() {
     travelCalc.expenses();
 });
 function chart() {
-    var ctx = document.getElementById("myChart");
-     num1 = $("#gas-in").val();
-     num2 = $("#mpg-input").val();
-     num3 = $("#miles-input").val();
-    var gasChart = ((num1 / num2) * num3);
-//lodging
-     lodge1= $("#lodging-in").val();
-     lodge2= $("#nights-in").val();
-    var lodgingChart= (lodge1 * lodge2);
+    ctx = document.getElementById("myChart");
+    num1 = parseFloat($("#gas-in").val());
+    num2 = parseInt($("#mpg-input").val());
+    num3 = parseInt($("#miles-input").val());
+    gasChart = ((num3 / num2) * num1);
+    //lodging
+    lodge1 = parseInt($("#lodging-in").val());
+    lodge2 = parseInt($("#nights-in").val());
+    lodgingChart = (lodge1 * lodge2);
     var myChart = new Chart(ctx, {
         type: 'pie',
         data: {
@@ -221,7 +263,7 @@ function chart() {
                     "#e74c3c",
                     "#34495e"
                 ],
-                data: [ gasChart, lodgingChart, tollChart, entChart, foodChart]
+                data: [gasChart, lodgingChart, tollChart, entChart, foodChart]
                 //gasChart, entChart, foodChart
             }]
         }
