@@ -34,8 +34,6 @@ $(document).ready(function() {
                     $("#budget-unknown").attr('value', 'true');
                     $("#budget-known").attr('value', 'false');
                     $('#budget-input').detach();
-                    $('budget-input').val('');
-                    $('#rem-output').text('');
                 } else if (category === "budget-known") {
                     $("#budget-unkown").attr('value', 'false');
                     $("#budget-known").attr('value', 'true');
@@ -76,7 +74,7 @@ $(document).ready(function() {
                 if ($(this).is(':checked')) {
                     $(this).attr('value', 'true');
                     foodInput = $("<input>");
-                    $(foodInput).attr('placeholder', "Food budget");
+                    $(foodInput).attr('placeholder', "Budget for food");
                     $(foodInput).attr('id', "food-in");
                     $("#food-input").append(foodInput);
                 } else {
@@ -185,26 +183,28 @@ $(document).ready(function() {
             });
         },
         totknown: function() {
-
             bud = parseInt($('#budget-input').val());
             console.log(bud);
-
-           if ((typeof(gasInput) == 'undefined') && (typeof(lodgingInput) == 'undefined')) {
-                 tot = bud - parseInt(entChart) - parseInt(foodChart) - parseInt(tollChart);
+            //tot = bud - parseInt(gasChart) - parseInt(entChart) - parseInt(foodChart) - parseInt(lodgingChart) - parseInt(tollChart);
+            console.log(tot);
+               if ((typeof(gasInput) == 'undefined') && (typeof(lodgingInput) == 'undefined')) {
+                tot =  bud - parseInt(entChart) - parseInt(foodChart)  - parseInt(tollChart);
                 console.log(tot);
-           }
+                $('#tot-input').text("Total budget: $" + tot);}
             else if (typeof(lodgingInput) == 'undefined') {
                 tot = bud - parseInt(gasChart) - parseInt(entChart) - parseInt(foodChart) - parseInt(tollChart);
                 console.log(tot);
+                $('#tot-input').text("Total budget: $" + tot);
             } else if (typeof(gasInput) == 'undefined') {
-               tot = bud - parseInt(entChart) - parseInt(foodChart) - parseInt(lodgingChart) - parseInt(tollChart);
+                tot = bud - parseInt(entChart) - parseInt(foodChart) - parseInt(lodgingChart) - parseInt(tollChart);
                 console.log(tot);
+                $('#tot-input').text("Total budget: $" + tot);
             }
              else {
                 tot = bud - parseInt(gasChart) - parseInt(entChart) - parseInt(foodChart) - parseInt(lodgingChart) - parseInt(tollChart);
                 console.log(tot);
-             }
-
+                $('#tot-input').text("Total budget: $" + tot);
+            }
             if (tot >= 0) {
                 $('#tot-input').text("Total Budget: $" + bud);
                 $('#rem-output').text("Remaining Budget: $" + tot);
@@ -215,6 +215,17 @@ $(document).ready(function() {
             }
         },
         totunknown: function() {
+            console.log(num1);
+            console.log(num2);
+            console.log(num3);
+            console.log(gasChart);
+            console.log(parseInt(gasChart));
+            console.log(entChart);
+            console.log(foodChart);
+            console.log(lodge1);
+            console.log(lodge2);
+            console.log(parseInt(lodgingChart));
+            console.log(tollChart);
             if ((typeof(gasInput) == 'undefined') && (typeof(lodgingInput) == 'undefined')) {
                 tot = parseInt(entChart) + parseInt(foodChart)  + parseInt(tollChart);
                 console.log(tot);
