@@ -34,6 +34,7 @@ $(document).ready(function() {
                     $("#budget-unknown").attr('value', 'true');
                     $("#budget-known").attr('value', 'false');
                     $('#budget-input').detach();
+                     $('#rem-output').text('');
                 } else if (category === "budget-known") {
                     $("#budget-unkown").attr('value', 'false');
                     $("#budget-known").attr('value', 'true');
@@ -74,7 +75,7 @@ $(document).ready(function() {
                 if ($(this).is(':checked')) {
                     $(this).attr('value', 'true');
                     foodInput = $("<input>");
-                    $(foodInput).attr('placeholder', "Budget for food");
+                    $(foodInput).attr('placeholder', "Daily budget for food");
                     $(foodInput).attr('id', "food-in");
                     $("#food-input").append(foodInput);
                 } else {
