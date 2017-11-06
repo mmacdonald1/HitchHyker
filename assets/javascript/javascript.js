@@ -74,7 +74,7 @@ $(document).ready(function() {
                 if ($(this).is(':checked')) {
                     $(this).attr('value', 'true');
                     foodInput = $("<input>");
-                    $(foodInput).attr('placeholder', "Daily budget for food");
+                    $(foodInput).attr('placeholder', "Budget for food");
                     $(foodInput).attr('id', "food-in");
                     $("#food-input").append(foodInput);
                 } else {
